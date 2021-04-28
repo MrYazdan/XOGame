@@ -75,9 +75,6 @@ def play():
 
 
 def main() -> None:
-    play()
-    exit()
-
     while True:
 
         welcome_page()
