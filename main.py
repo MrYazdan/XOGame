@@ -1,5 +1,6 @@
 # from exceptions import *
 from module import *
+from functions import *
 from player import Player as _Player
 from game import XOGame as _XOGame
 
