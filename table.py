@@ -1,7 +1,7 @@
 from exceptions import *
 
 
-class _XOTable:
+class XOTable:
     xo_map = {k: None for k in range(1, 10)}
 
     def __str__(self):
