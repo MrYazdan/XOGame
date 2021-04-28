@@ -61,7 +61,7 @@ def setting_panel(_from: str) -> None:
             while True:
                 welcome_page()
                 termcolor.cprint(f"{'=' * 14} SETTING -> SET ROUND COUNT {'=' * 14}", color="cyan")
-                _tmp = input(" Enter Number Of Round To Play Game : [1 / 9]")
+                _tmp = input(" Enter Number Of Round To Play Game [1 / 9] : ")
 
                 if 1 <= int(_tmp) <= 9:
                     Setting.ROUND_COUNT = int(_tmp)
