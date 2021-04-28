@@ -33,3 +33,19 @@ print(game)
 
 winner = game.winner
 print(winner.name, winner.sign)
+
+
+def main():
+    welcome_page()
+    input()
+    try:
+        pass
+    except:
+        pass
+    else:
+        pass
+
+
+# main page starter  :)
+if __name__ == '__main__':
+    main()
