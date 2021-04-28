@@ -4,7 +4,7 @@ from player import Player as _Player
 from table import XOTable as _XOTable
 
 
-class _XOGame(_XOTable):
+class XOGame(_XOTable):
 
     def __init__(self, player1: _Player, player2: _Player) -> None:
         self.player1 = player1
