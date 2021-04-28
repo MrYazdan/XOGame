@@ -59,6 +59,10 @@ def main() -> None:
                 exit_page("main")
                 continue
 
+            elif cmd == "2":
+                setting_panel("main")
+                continue
+
         except AssertionError:
             command_error("main")
             continue
