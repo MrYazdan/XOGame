@@ -1,5 +1,4 @@
 from exceptions import *
-from module import *
 from functions import *
 from player import Player as _Player
 from game import XOGame as _XOGame
@@ -42,7 +41,7 @@ def main() -> None:
         termcolor.cprint(f"{'=' * 25} MAIN {'=' * 25}", color="cyan")
 
         print(
-            """                1. Start New Game        
+            """                    1. Start New Game        
                     2. Setting
                     3. Show Last Result
 
@@ -55,6 +54,10 @@ def main() -> None:
         try:
             cmd = input(" Please enter number of command > ".title())
             assert iscommand("main", cmd), CommandError()
+
+            if cmd == "0":
+                exit_page("main")
+                continue
 
         except AssertionError:
             command_error("main")

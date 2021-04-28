@@ -26,3 +26,16 @@ def command_error(_from: str) -> None:
         termcolor.cprint(f"{'='*20} COMMAND  ERROR {'=' * 20}", color="cyan")
         print("Print Your Command Was Not Defined! :(")
         _tmp = input("Press Enter To Load Main Again ~")
+
+
+def exit_page(_from: str) -> None:
+    if _from == "main":
+        welcome_page()
+        termcolor.cprint(f"{'=' * 25} EXIT {'=' * 25}", color="cyan")
+        print("What Are You Doing !?")
+        _tmp = input("Are you sure to exit the game ? ".title()+"[y/N] : ")
+
+        if _tmp.lower() == "y":
+            welcome_page()
+            termcolor.cprint(pyfiglet.figlet_format("Goodbye !", font="small"), color="red")
+            exit()
