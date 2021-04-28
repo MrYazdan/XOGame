@@ -35,28 +35,30 @@ winner = game.winner
 print(winner.name, winner.sign)
 
 
-def main():
-    clear()
-    welcome_page()
-    termcolor.cprint(f"{'='*25} MAIN {'=' * 25}", color="cyan")
+def main() -> None:
+    while True:
 
-    print(
-        """                1. Start New Game        
-                2. Setting
-                3. Show Last Result
-                
-                9. Report Bug
-                0. Exit The Game"""
-    )
+        welcome_page()
+        termcolor.cprint(f"{'=' * 25} MAIN {'=' * 25}", color="cyan")
 
-    termcolor.cprint("=" * 56, color="cyan")
+        print(
+            """                1. Start New Game        
+                    2. Setting
+                    3. Show Last Result
 
-    try:
-        cmd = input(" Please enter number of command > ".title())
-        assert iscommand("main", cmd), CommandError()
+                    9. Report Bug
+                    0. Exit The Game"""
+        )
 
-    except:
-        command_error("main")
+        termcolor.cprint("=" * 56, color="cyan")
+
+        try:
+            cmd = input(" Please enter number of command > ".title())
+            assert iscommand("main", cmd), CommandError()
+
+        except AssertionError:
+            command_error("main")
+            continue
 
 
 # main page starter  :)

@@ -18,5 +18,5 @@ class RoundError(Exception):
     pass
 
 
-class CommandError(Exception):
+class CommandError(AssertionError):
     pass

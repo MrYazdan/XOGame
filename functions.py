@@ -6,6 +6,7 @@ def clear():
 
 
 def welcome_page():
+    clear()
     termcolor.cprint("=" * 56, color="cyan")
     termcolor.cprint(pyfiglet.figlet_format(" |= XO Game"), color="green", end=" ")
     print("Source : https://github.com/MrYazdan/XOGame_Maktab52")
@@ -19,8 +20,9 @@ def iscommand(_from: str, cmd: str) -> bool:
     return False
 
 
-def command_error(_from: str):
+def command_error(_from: str) -> None:
     if _from == "main":
-        clear()
         welcome_page()
         termcolor.cprint(f"{'='*20} COMMAND  ERROR {'=' * 20}", color="cyan")
+        print("Print Your Command Was Not Defined! :(")
+        _tmp = input("Press Enter To Load Main Again ~")
