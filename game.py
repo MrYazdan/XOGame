@@ -23,8 +23,6 @@ class XOGame(_XOTable):
         # [3, 5, 7] - [1, 5, 9]
         self.white_list.extend([[5 - i, 5, 5 + i] for i in range(2, 5, 2)])
 
-        print(self.white_list)
-
     def _calculate_result(self, cell_no):
         self.result = False
         white_list = self.white_list

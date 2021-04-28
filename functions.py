@@ -96,3 +96,13 @@ def start_game_panel():
     print()
     termcolor.cprint(f"{'=' * 56}", color="cyan")
     _tmp = input(" Press Enter To Play Game ~ ")
+
+
+def normalize_cell_no(string: str) -> int:
+    try:
+        string = int(string)
+
+        if 1 <= string <= 9:
+            return string
+    except:
+        return 0

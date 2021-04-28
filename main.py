@@ -1,40 +1,83 @@
 from exceptions import *
 from functions import *
+from settings import Setting
 from player import Player as _Player
 from game import XOGame as _XOGame
 
-pl1 = _Player("Reza", "x")
-pl2 = _Player("Reza", "o")
 
-game = _XOGame(pl1, pl2)
+# winner = game.winner
+# print(winner.name, winner.sign)
 
-game.mark(5, 'x')
-game.mark(6, 'o')
-game.mark(2, 'x')
 
-# duplicate round error
-# game.mark(8, 'x')
+def play():
+    # Config :
+    pl1 = _Player(Setting.PL1_NAME, "x")
+    pl2 = _Player(Setting.PL2_NAME, "o")
+    game = _XOGame(pl1, pl2)
 
-# invalid cell error
-# game.mark(12, 'o')
+    _name = pl1.name
+    fulled_cell = 0
+    turn = pl1.sign
+    round_count = Setting.ROUND_COUNT
 
-game.mark(1, 'o')
+    while round_count != 0:
+        while fulled_cell <= 9:
+            welcome_page()
+            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> MARK {'=' * 14}", color="cyan")
 
-# unfinished error
-# print(game.winner.name)
+            termcolor.cprint(game, color="cyan")
+            print()
 
-game.mark(8, 'x')
+            _tmp = input(f" {_name.title()} Enter Number To Mark The Cell : ")
+            _tmp = normalize_cell_no(_tmp)
 
-# finished error
-# game.mark(3, 'o')
+            if _tmp == 0:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
+                print(" Please Enter True Value !\n Cell Is [1 ~ 9]\n")
+                _tmp = input(" Press Enter To Try Again ~ ")
+                continue
 
-print(game)
+            try:
+                game.mark(_tmp, turn)
+            except:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
+                print(" Please Enter True Value !\n Cell Is [1 ~ 9] And Not Used !\n")
+                _tmp = input(" Press Enter To Try Again ~ ")
+                continue
 
-winner = game.winner
-print(winner.name, winner.sign)
+            winner = game.winner
+            if winner is not None:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
+                termcolor.cprint(game, color="cyan")
+                print()
+                termcolor.cprint(f"{winner.name} Is Winner in Round {round_count}", color="green")
+                print()
+
+                if winner.name == Setting.PL1_NAME:
+                    Setting.PL1_WIN += 1
+                else:
+                    Setting.PL2_WIN += 1
+
+            if fulled_cell == 9:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> EQUAL {'=' * 14}", color="cyan")
+                termcolor.cprint(game, color="cyan")
+                print()
+                termcolor.cprint(f"Players Is Equal in Round {round_count}", color="green")
+                print()
+
+            turn = "o" if turn == "x" else "x"
+            _name = pl1.name if _name == pl2.name else pl2.name
+            fulled_cell += 1
 
 
 def main() -> None:
+    play()
+    exit()
+
     while True:
 
         welcome_page()
@@ -65,6 +108,7 @@ def main() -> None:
 
             elif cmd == "2":
                 setting_panel("main")
+                play()
                 continue
 
         except AssertionError:
