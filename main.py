@@ -59,6 +59,10 @@ def main() -> None:
                 exit_page("main")
                 continue
 
+            elif cmd == "1":
+                start_game_panel()
+                continue
+
             elif cmd == "2":
                 setting_panel("main")
                 continue

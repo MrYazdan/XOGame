@@ -25,20 +25,20 @@ def command_error(_from: str) -> None:
     if _from == "main":
         welcome_page()
         termcolor.cprint(f"{'=' * 20} COMMAND  ERROR {'=' * 20}", color="cyan")
-        print("Print Your Command Was Not Defined! :(")
-        _tmp = input("Press Enter To Load Main Again ~")
+        print(" Print Your Command Was Not Defined! :(")
+        _tmp = input(" Press Enter To Load Main Again ~")
 
 
 def exit_page(_from: str) -> None:
     if _from == "main":
         welcome_page()
         termcolor.cprint(f"{'=' * 25} EXIT {'=' * 25}", color="cyan")
-        print("What Are You Doing !?")
-        _tmp = input("Are you sure to exit the game ? ".title() + "[y/N] : ")
+        print(" What Are You Doing !?")
+        _tmp = input(" Are you sure to exit the game ? ".title() + "[y/N] : ")
 
         if _tmp.lower() == "y":
             welcome_page()
-            termcolor.cprint(pyfiglet.figlet_format("Goodbye !", font="small"), color="red")
+            termcolor.cprint(pyfiglet.figlet_format(" Goodbye !", font="small"), color="red")
             exit()
 
 
@@ -76,3 +76,23 @@ def setting_panel(_from: str) -> None:
                     _tmp = input(" Please Enter True Value !\n Press Enter To Continue ~ ")
                     continue
 
+
+def start_game_panel():
+    _tmp = []
+
+    for i in range(2):
+        welcome_page()
+        termcolor.cprint(f"{'=' * 19} INITIALIZE  GAME {'=' * 19}", color="cyan")
+        _tmp.append(input(f" Please Enter Name Of Player {i + 1} : "))
+
+    Setting.PL1_NAME = _tmp[0]
+    Setting.PL2_NAME = _tmp[1]
+
+    welcome_page()
+    termcolor.cprint(f"{'=' * 19} INITIALIZE  GAME {'=' * 19}", color="cyan")
+    print()
+    termcolor.cprint(f" Player 1 => {Setting.PL1_NAME} With Sign : 'X'", color="red")
+    termcolor.cprint(f" Player 2 => {Setting.PL2_NAME} With Sign : 'O'", color="blue")
+    print()
+    termcolor.cprint(f"{'=' * 56}", color="cyan")
+    _tmp = input(" Press Enter To Play Game ~ ")
