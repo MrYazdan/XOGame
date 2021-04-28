@@ -16,3 +16,7 @@ class InvalidPlayer(Exception):
 
 class RoundError(Exception):
     pass
+
+
+class CommandError(Exception):
+    pass

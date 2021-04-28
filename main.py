@@ -1,4 +1,4 @@
-# from exceptions import *
+from exceptions import *
 from module import *
 from functions import *
 from player import Player as _Player
@@ -36,14 +36,27 @@ print(winner.name, winner.sign)
 
 
 def main():
+    clear()
     welcome_page()
-    input()
+    termcolor.cprint(f"{'='*25} MAIN {'=' * 25}", color="cyan")
+
+    print(
+        """                1. Start New Game        
+                2. Setting
+                3. Show Last Result
+                
+                9. Report Bug
+                0. Exit The Game"""
+    )
+
+    termcolor.cprint("=" * 56, color="cyan")
+
     try:
-        pass
+        cmd = input(" Please enter number of command > ".title())
+        assert iscommand("main", cmd), CommandError()
+
     except:
-        pass
-    else:
-        pass
+        command_error("main")
 
 
 # main page starter  :)
