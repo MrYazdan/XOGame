@@ -112,3 +112,4 @@ def show_last_result():
     welcome_page()
     termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
     print()
+    _tmp = input(" Press Enter To Back Main ~ ")
