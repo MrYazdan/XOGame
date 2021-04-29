@@ -8,3 +8,6 @@ class Setting:
     # Player2:
     PL2_NAME = None
     PL2_WIN = 0
+
+    # Last Result:
+    LAST_RESULT = "Empty Result !"

@@ -72,6 +72,26 @@ def play():
             turn = "o" if turn == "x" else "x"
             _name = pl1.name if _name == pl2.name else pl2.name
             fulled_cell += 1
+        round_count -=1
+
+    welcome_page()
+    termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
+
+    if Setting.PL1_WIN > Setting.PL2_WIN:
+        termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name} Winner !", font="small"), color="blue")
+        _res = f" {pl1.name} Winner !"
+    elif Setting.PL1_WIN < Setting.PL2_WIN:
+        termcolor.cprint(pyfiglet.figlet_format(f" {pl2.name} Winner !", font="small"), color="blue")
+        _res = f" {pl2.name} Winner !"
+    else:
+        termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name} EQUAL {pl2.name}", font="small"), color="yellow")
+        _res = f" {pl1.name} EQUAL {pl2.name}"
+
+    Setting.LAST_RESULT = _res
+    print()
+    _tmp = input(" Press Enter To Back Main ~ ")
+
+    main()
 
 
 def main() -> None:
@@ -101,11 +121,15 @@ def main() -> None:
 
             elif cmd == "1":
                 start_game_panel()
+                play()
                 continue
 
             elif cmd == "2":
                 setting_panel("main")
-                play()
+                continue
+
+            elif cmd == "3":
+                show_last_result("main")
                 continue
 
         except AssertionError:

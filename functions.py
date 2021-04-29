@@ -106,3 +106,9 @@ def normalize_cell_no(string: str) -> int:
             return string
     except:
         return 0
+
+
+def show_last_result():
+    welcome_page()
+    termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
+    print()
