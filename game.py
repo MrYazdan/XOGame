@@ -1,4 +1,3 @@
-from module import *
 from exceptions import *
 from player import Player as _Player
 from table import XOTable as _XOTable
@@ -32,28 +31,22 @@ class XOGame(_XOTable):
             if all(list(map(lambda x: _map[x] == _map[cell_no], li))):
                 self._winner = _map[cell_no]
 
-    def mark(self, cell_no, player: Union[_Player, Literal['x', 'o']]):
-
-        # if finished game ? if 'True'-> assert error
-        assert not self._winner, FinishedGameError
-
-        # set true value for sign
-        player_sign = player.sign if isinstance(player, _Player) else player
+    def mark(self, cell_no):
 
         if self.round is None:
             # first round
-            self.round = player_sign
+            self.round = self.player1.sign
 
-        elif self.round == player_sign:
-            # duplicate round
-            raise RoundError()
+        elif self.round == self.player1.sign:
+            # change turn game !
+            self.round = self.player2.sign
 
-        else:
-            # round OK ! :)
-            self.round = player_sign
+        elif self.round == self.player2.sign:
+            # change turn game !
+            self.round = self.player1.sign
 
         # save to _XOTable
-        super().mark(cell_no, player_sign)
+        super().mark(cell_no, self.round)
 
         # calculate result
         self._calculate_result(cell_no)
@@ -61,10 +54,26 @@ class XOGame(_XOTable):
     @property
     def winner(self) -> _Player:
 
-        # if not finished game ? if 'True'-> assert error
-        assert self._winner, UnFinishedGameError
+        if self._winner is None:
+            return None
 
         # select winner player with sign
         winner_player = self.player1 if self.player1.sign == self._winner else self.player2
 
         return winner_player
+
+
+# pl1 = _Player("reza", "x")
+# pl2 = _Player("ali", "o")
+# game = XOGame(pl1, pl2)
+#
+# game.mark(5)
+# game.mark(6)
+# game.mark(7)
+# game.mark(8)
+# game.mark(1)
+# game.mark(4)
+# game.mark(3)
+#
+# print(game)
+# print(game.winner)

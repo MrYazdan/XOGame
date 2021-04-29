@@ -1,3 +1,5 @@
+import termcolor
+
 from exceptions import *
 from functions import *
 from settings import Setting
@@ -13,32 +15,60 @@ def play():
     # Config :
     pl1 = _Player(Setting.PL1_NAME, "x")
     pl2 = _Player(Setting.PL2_NAME, "o")
-    game = _XOGame(pl1, pl2)
 
     _name = pl1.name
-    turn = "x"
+    round_count = 1
+    fulled_cell = 0
 
-    game.mark(5, turn)
+    while round_count <= Setting.ROUND_COUNT:
+        game = _XOGame(pl1, pl2)
+        while fulled_cell <= 9:
 
-    for _round in range(1, Setting.ROUND_COUNT + 1):
-        for cell in range(1, 10):
             welcome_page()
-            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {_round} -> MARK {'=' * 14}", color="cyan")
+            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> MARK {'=' * 14}", color="cyan")
             termcolor.cprint(game, color="cyan")
             print()
 
-            user_input = input(f" {_name.title()} Enter Number To Mark The Cell : ")
-            user_input = normalize_cell_no(user_input)
+            ui = input(f" {_name.title()} Enter Number To Mark The Cell : ")
+            ui = normalize_cell_no(ui)
 
-            if user_input == 0:
+            if ui == 0:
                 welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {_round} -> ERROR {'=' * 14}", color="cyan")
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
                 print(" Please Enter True Value !\n Cell Is [1 ~ 9]\n")
                 _tmp = input(" Press Enter To Try Again ~ ")
                 continue
 
-            try:
-                game.mark(user_input)
+            game.mark(ui)
+
+            winner = game.winner
+            if winner is not None:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
+                print()
+                termcolor.cprint(pyfiglet.figlet_format(winner.name, font="small"), color="green", end=" ")
+                termcolor.cprint(f"Is Winner in Round {round_count}", color="green")
+                print()
+                _tmp = input(" Press Enter To Continue ~ ")
+
+                if winner.name == Setting.PL1_NAME:
+                    Setting.PL1_WIN += 1
+                else:
+                    Setting.PL2_WIN += 1
+                game.reset()
+                break
+
+            if fulled_cell == 9:
+                welcome_page()
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> EQUAL {'=' * 14}", color="cyan")
+                termcolor.cprint(game, color="cyan")
+                print()
+                termcolor.cprint(f"Players Is Equal in Round {round_count}", color="green")
+                print()
+
+            _name = pl1.name if _name == pl2.name else pl2.name
+            fulled_cell += 1
+        round_count += 1
 
     welcome_page()
     termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
