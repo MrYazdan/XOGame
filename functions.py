@@ -78,15 +78,15 @@ def setting_panel(_from: str) -> None:
 
 
 def start_game_panel():
-    _tmp = []
+    tmp_list = []
 
     for i in range(2):
         welcome_page()
         termcolor.cprint(f"{'=' * 19} INITIALIZE  GAME {'=' * 19}", color="cyan")
-        _tmp.append(input(f" Please Enter Name Of Player {i + 1} : "))
+        tmp_list.append(input(f" Please Enter Name Of Player {i + 1} : "))
 
-    Setting.PL1_NAME = _tmp[0]
-    Setting.PL2_NAME = _tmp[1]
+    Setting.PL1_NAME = tmp_list[0]
+    Setting.PL2_NAME = tmp_list[1]
 
     welcome_page()
     termcolor.cprint(f"{'=' * 19} INITIALIZE  GAME {'=' * 19}", color="cyan")
@@ -111,5 +111,7 @@ def normalize_cell_no(string: str) -> int:
 def show_last_result():
     welcome_page()
     termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
+    print()
+    termcolor.cprint(f" >> {Setting.LAST_RESULT}", color="cyan")
     print()
     _tmp = input(" Press Enter To Back Main ~ ")

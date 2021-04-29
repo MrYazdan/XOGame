@@ -16,63 +16,29 @@ def play():
     game = _XOGame(pl1, pl2)
 
     _name = pl1.name
-    fulled_cell = 0
-    turn = pl1.sign
-    round_count = Setting.ROUND_COUNT
+    turn = "x"
 
-    while round_count != 0:
-        while fulled_cell <= 9:
+    game.mark(5, turn)
+
+    for _round in range(1, Setting.ROUND_COUNT + 1):
+        for cell in range(1, 10):
             welcome_page()
-            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> MARK {'=' * 14}", color="cyan")
-
+            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {_round} -> MARK {'=' * 14}", color="cyan")
             termcolor.cprint(game, color="cyan")
             print()
 
-            _tmp = input(f" {_name.title()} Enter Number To Mark The Cell : ")
-            _tmp = normalize_cell_no(_tmp)
+            user_input = input(f" {_name.title()} Enter Number To Mark The Cell : ")
+            user_input = normalize_cell_no(user_input)
 
-            if _tmp == 0:
+            if user_input == 0:
                 welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
+                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {_round} -> ERROR {'=' * 14}", color="cyan")
                 print(" Please Enter True Value !\n Cell Is [1 ~ 9]\n")
                 _tmp = input(" Press Enter To Try Again ~ ")
                 continue
 
             try:
-                game.mark(_tmp, turn)
-            except:
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
-                print(" Please Enter True Value !\n Cell Is [1 ~ 9] And Not Used !\n")
-                _tmp = input(" Press Enter To Try Again ~ ")
-                continue
-
-            winner = game.winner
-            if winner is not None:
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
-                termcolor.cprint(game, color="cyan")
-                print()
-                termcolor.cprint(f"{winner.name} Is Winner in Round {round_count}", color="green")
-                print()
-
-                if winner.name == Setting.PL1_NAME:
-                    Setting.PL1_WIN += 1
-                else:
-                    Setting.PL2_WIN += 1
-
-            if fulled_cell == 9:
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> EQUAL {'=' * 14}", color="cyan")
-                termcolor.cprint(game, color="cyan")
-                print()
-                termcolor.cprint(f"Players Is Equal in Round {round_count}", color="green")
-                print()
-
-            turn = "o" if turn == "x" else "x"
-            _name = pl1.name if _name == pl2.name else pl2.name
-            fulled_cell += 1
-        round_count -=1
+                game.mark(user_input)
 
     welcome_page()
     termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
@@ -80,9 +46,11 @@ def play():
     if Setting.PL1_WIN > Setting.PL2_WIN:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name} Winner !", font="small"), color="blue")
         _res = f" {pl1.name} Winner !"
+
     elif Setting.PL1_WIN < Setting.PL2_WIN:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl2.name} Winner !", font="small"), color="blue")
         _res = f" {pl2.name} Winner !"
+
     else:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name} EQUAL {pl2.name}", font="small"), color="yellow")
         _res = f" {pl1.name} EQUAL {pl2.name}"
@@ -90,8 +58,6 @@ def play():
     Setting.LAST_RESULT = _res
     print()
     _tmp = input(" Press Enter To Back Main ~ ")
-
-    main()
 
 
 def main() -> None:
@@ -119,16 +85,16 @@ def main() -> None:
                 exit_page("main")
                 continue
 
-            elif cmd == "1":
+            if cmd == "1":
                 start_game_panel()
                 play()
                 continue
 
-            elif cmd == "2":
+            if cmd == "2":
                 setting_panel("main")
                 continue
 
-            elif cmd == "3":
+            if cmd == "3":
                 show_last_result()
                 continue
 
