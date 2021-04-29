@@ -98,14 +98,21 @@ def start_game_panel():
     _tmp = input(" Press Enter To Play Game ~ ")
 
 
-def normalize_cell_no(string: str) -> int:
+def normalize_cell_no(data: str) -> int:
     try:
-        string = int(string)
-
-        if 1 <= string <= 9:
-            return string
+        data = int(data)
     except:
-        return 0
+        pass
+    else:
+        while True:
+            welcome_page()
+            termcolor.cprint(f"{'=' * 15} PLAY -> GET TRUE VALUES FOR MARK {'=' * 15}", color="cyan")
+            print()
+            _data = input("Enter True Value For Select The Mark [1 ~ 9] : ")
+
+            if isinstance(_data, int) and 0 < _data < 10:
+                return _data
+            continue
 
 
 def show_last_result():

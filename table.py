@@ -31,3 +31,8 @@ class XOTable:
 
         # insert sign to _XOTable
         self.xo_map[cell_no] = sign
+
+    @classmethod
+    def reset(cls):
+        cls.xo_map = {k: None for k in range(1, 10)}
+        XOTable.xo_map = {k: None for k in range(1, 10)}

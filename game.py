@@ -23,7 +23,6 @@ class XOGame(_XOTable):
         self.white_list.extend([[5 - i, 5, 5 + i] for i in range(2, 5, 2)])
 
     def _calculate_result(self, cell_no):
-        self.result = False
         white_list = self.white_list
         _map = super().xo_map
 
@@ -61,6 +60,12 @@ class XOGame(_XOTable):
         winner_player = self.player1 if self.player1.sign == self._winner else self.player2
 
         return winner_player
+
+    def reset(self):
+        self.round = None
+        self._winner = None
+
+        super().reset()
 
 
 # pl1 = _Player("reza", "x")
