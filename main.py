@@ -129,7 +129,7 @@ def main() -> None:
                 continue
 
             elif cmd == "3":
-                show_last_result("main")
+                show_last_result()
                 continue
 
         except AssertionError:
