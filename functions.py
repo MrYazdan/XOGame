@@ -99,20 +99,15 @@ def start_game_panel():
 
 
 def normalize_cell_no(data: str) -> int:
-    try:
-        data = int(data)
-    except:
-        pass
-    else:
-        while True:
-            welcome_page()
-            termcolor.cprint(f"{'=' * 15} PLAY -> GET TRUE VALUES FOR MARK {'=' * 15}", color="cyan")
-            print()
-            _data = input("Enter True Value For Select The Mark [1 ~ 9] : ")
+    if data.isnumeric():
+        if 0 < int(data) < 10:
+            return int(data)
 
-            if isinstance(_data, int) and 0 < _data < 10:
-                return _data
-            continue
+    welcome_page()
+    termcolor.cprint(f"{'=' * 15} PLAY -> GET TRUE VALUES FOR MARK {'=' * 15}", color="cyan")
+    print()
+    _data = input("Enter True Value For Select The Mark [1 ~ 9] : ")
+    return normalize_cell_no(_data)
 
 
 def show_last_result():

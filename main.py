@@ -31,9 +31,7 @@ def play():
             termcolor.cprint(game, color="cyan")
             print()
 
-            ui = input(f" {_name.title()} Enter Number To Mark The Cell : ")
-            ui = normalize_cell_no(ui)
-
+            ui = normalize_cell_no(input(f" {_name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
 
             if ui == 0:
                 welcome_page()
