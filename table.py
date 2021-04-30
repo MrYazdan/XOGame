@@ -31,8 +31,3 @@ class XOTable:
 
         # insert sign to _XOTable
         self.xo_map[cell_no] = sign
-
-    # reset game for play new round
-    def reset(self):
-        # empty cells value
-        self.xo_map = {k: None for k in range(1, 10)}

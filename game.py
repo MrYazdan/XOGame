@@ -66,6 +66,6 @@ class XOGame(XOTable):
         return winner_player
 
     def reset(self):
-        super().reset()
+        XOTable.xo_map = {k: None for k in range(1, 10)}
         self.round = None
         self._winner = None
