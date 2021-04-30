@@ -69,31 +69,3 @@ class XOGame(XOTable):
         super().reset()
         self.round = None
         self._winner = None
-
-
-# pl1 = Player("reza", "x")
-# pl2 = Player("ali", "o")
-# game = XOGame(pl1, pl2)
-#
-# game.mark(5)
-# game.mark(6)
-# game.mark(7)
-# game.mark(8)
-# game.mark(1)
-# game.mark(4)
-# game.mark(3)
-#
-# print(game)
-# print(game.winner)
-# game.reset()
-#
-# game.mark(5)
-# game.mark(6)
-# game.mark(7)
-# game.mark(8)
-# game.mark(1)
-# game.mark(4)
-# game.mark(3)
-#
-# print(game)
-# print(game.winner)
