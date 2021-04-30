@@ -19,7 +19,7 @@ class XOTable:
 """.format(*[_map[i] if _map[i] else "-" for i in _map])
 
     # cell selector for insert [x or o] to value
-    def mark(self, cell_no, sign: str):
+    def _mark(self, cell_no, sign: str):
         # check cell_no in range int (1, 9+1)
         assert isinstance(cell_no, int) and 1 <= cell_no <= 9, InvalidCellError("Enter a valid cell no [1, 9]")
 
