@@ -3,7 +3,7 @@ from settings import Setting
 
 
 def clear():
-    system("cls") if name == "nt" else system("clear")
+    os.system("cls") if os.name == "nt" else os.system("clear")
 
 
 def welcome_page():
