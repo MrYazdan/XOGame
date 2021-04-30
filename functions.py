@@ -6,12 +6,15 @@ def clear():
     os.system("cls") if os.name == "nt" else os.system("clear")
 
 
-def welcome_page():
+def welcome_page(string: str, count_ward: int):
     clear()
     termcolor.cprint("=" * 56, color="cyan")
     termcolor.cprint(pyfiglet.figlet_format(" |= XO Game"), color="green", end=" ")
     print("Source : https://github.com/MrYazdan/XOGame_Maktab52")
     print(" Version : 1.0.0  -  Developer : Yazdan\n")
+
+    if not (string == "" and count_ward == 0):
+        termcolor.cprint(f"{'=' * count_ward}{string}{'=' * count_ward}", color="cyan")
 
 
 def iscommand(_from: str, cmd: str) -> bool:

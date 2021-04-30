@@ -23,8 +23,7 @@ def play():
 
         while fulled_cell <= 9:
 
-            welcome_page()
-            termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> MARK {'=' * 14}", color="cyan")
+            welcome_page(f" PLAY --> ROUND : {round_count} -> MARK ", 14)
             termcolor.cprint(game, color="cyan")
             print()
 
@@ -38,8 +37,7 @@ def play():
 
             # check ! if winner is player instance
             if isinstance(winner, Player):
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
+                welcome_page(f" PLAY --> ROUND : {round_count} -> WIN! ",14)
                 print()
                 termcolor.cprint(pyfiglet.figlet_format(winner.name.upper(), font="small"), color="green", end=" ")
                 termcolor.cprint(f"Is Winner in Round {round_count}", color="green")
@@ -53,8 +51,7 @@ def play():
                 break
 
             if fulled_cell == 9:
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> EQUAL {'=' * 14}", color="cyan")
+                welcome_page(f" PLAY -> ROUND : {round_count} -> EQUAL ", 14)
                 print()
                 termcolor.cprint(f"Players Is Equal in Round {round_count}", color="green")
                 print()
@@ -69,21 +66,24 @@ def play():
         # increase round count
         round_count += 1
 
-    welcome_page()
-    termcolor.cprint(f"{'=' * 21} SHOW  RESULT {'=' * 21}", color="cyan")
+    # show result game
+    welcome_page(" SHOW  RESULT ", 21)
+
+    # print winner player :
 
     if Setting.PL1_WIN > Setting.PL2_WIN:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name.upper()} Winner !", font="small"), color="blue")
-        _res = f" {pl1.name} Winner !"
+        _res = f" {pl1.name} Winner !\n"
 
     elif Setting.PL1_WIN < Setting.PL2_WIN:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl2.name.upper()} Winner !", font="small"), color="blue")
-        _res = f" {pl2.name} Winner !"
+        _res = f" {pl2.name} Winner !\n"
 
     else:
         termcolor.cprint(pyfiglet.figlet_format(f" {pl1.name}  EQUAL  {pl2.name}", font="small"), color="yellow")
-        _res = f" {pl1.name} EQUAL {pl2.name}"
+        _res = f" {pl1.name} EQUAL {pl2.name}\n"
 
+    # save result to last result
     Setting.LAST_RESULT = _res
     print()
     _tmp = input(" Press Enter To Back Main ~ ")
@@ -92,8 +92,7 @@ def play():
 def main() -> None:
     while True:
 
-        welcome_page()
-        termcolor.cprint(f"{'=' * 25} MAIN {'=' * 25}", color="cyan")
+        welcome_page(" MAIN ", 25)
 
         print(
             """                    1. Start New Game        
