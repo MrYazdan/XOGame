@@ -15,13 +15,13 @@ class XOGame(XOTable):
 
         # true value lists for calculate winner
         # [1, 2, 3] - [4, 5, 6] - [7, 8, 9]
-        self.white_list = [[i, i + 1, i + 2] for i in range(1, 9+1, 3)]
+        self.white_list = [[i, i + 1, i + 2] for i in range(1, 9 + 1, 3)]
 
         # [1, 4, 7] - [2, 5, 8] - [3, 6, 9]
-        self.white_list.extend([[i, i + 3, i + 6] for i in range(1, 3+1)])
+        self.white_list.extend([[i, i + 3, i + 6] for i in range(1, 3 + 1)])
 
         # [3, 5, 7] - [1, 5, 9]
-        self.white_list.extend([[5 - i, 5, 5 + i] for i in range(2, 4+1, 2)])
+        self.white_list.extend([[5 - i, 5, 5 + i] for i in range(2, 4 + 1, 2)])
 
     def _calculate_result(self, cell_no):
         white_list = self.white_list
@@ -69,3 +69,6 @@ class XOGame(XOTable):
         XOTable.xo_map = {k: None for k in range(1, 10)}
         self.round = None
         self._winner = None
+
+    def show_xo_dict(self):
+        return self.__class__.xo_map

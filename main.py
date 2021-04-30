@@ -27,7 +27,7 @@ def play():
             termcolor.cprint(game, color="cyan")
             print()
 
-            ui = int(input(f" {name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
+            ui = normalize_cell_no(input(f" {name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
 
             # mark the game table
             game.mark(ui)

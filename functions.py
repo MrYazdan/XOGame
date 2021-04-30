@@ -1,5 +1,6 @@
 from module import *
 from settings import Setting
+from table import XOTable
 
 
 def clear():
@@ -90,15 +91,25 @@ def start_game_panel():
     _tmp = input(" Press Enter To Play Game ~ ")
 
 
-def normalize_cell_no(data: str) -> int:
-    if data.isnumeric():
-        if 0 < int(data) < 10:
-            return int(data)
+def normalize_cell_no(data: str):
 
-    welcome_page(" PLAY -> GET TRUE VALUES FOR MARK ", 15)
+    while True:
+        if data == "":
+            pass
 
-    _data = input("\n Enter True Value For Select The Mark [1 ~ 9] : ")
-    return normalize_cell_no(_data)
+        elif data.isnumeric():
+
+            if 0 < int(data) < 10:
+
+                if int(data) not in XOTable.xo_map.values():
+                    return int(data)
+
+            else:
+                pass
+
+        welcome_page(" PLAY -> GET TRUE VALUES FOR MARK ", 15)
+        data = input("\n Value Error !\n Enter True Value For Select The Mark [1 ~ 9] : ")
+        continue
 
 
 def show_last_result():
