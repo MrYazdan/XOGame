@@ -1,4 +1,3 @@
-from exceptions import *
 from player import Player as _Player
 from table import XOTable as _XOTable
 
@@ -71,6 +70,18 @@ class XOGame(_XOTable):
 # pl1 = _Player("reza", "x")
 # pl2 = _Player("ali", "o")
 # game = XOGame(pl1, pl2)
+#
+# game.mark(5)
+# game.mark(6)
+# game.mark(7)
+# game.mark(8)
+# game.mark(1)
+# game.mark(4)
+# game.mark(3)
+#
+# print(game)
+# print(game.winner)
+# game.reset()
 #
 # game.mark(5)
 # game.mark(6)

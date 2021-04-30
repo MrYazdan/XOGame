@@ -1,14 +1,8 @@
-import termcolor
-
 from exceptions import *
 from functions import *
 from settings import Setting
 from player import Player as _Player
 from game import XOGame as _XOGame
-
-
-# winner = game.winner
-# print(winner.name, winner.sign)
 
 
 def play():
@@ -31,18 +25,13 @@ def play():
             termcolor.cprint(game, color="cyan")
             print()
 
-            ui = normalize_cell_no(input(f" {_name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
-
-            if ui == 0:
-                welcome_page()
-                termcolor.cprint(f"{'=' * 14} PLAY -> ROUND : {round_count} -> ERROR {'=' * 14}", color="cyan")
-                print(" Please Enter True Value !\n Cell Is [1 ~ 9]\n")
-                _tmp = input(" Press Enter To Try Again ~ ")
-                continue
+            ui = int(input(f" {_name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
 
             game.mark(ui)
 
             winner = game.winner
+            print(winner,"\n")
+            input("")
             if winner is not None:
                 welcome_page()
                 termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
