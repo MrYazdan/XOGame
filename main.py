@@ -40,8 +40,7 @@ def play():
                 welcome_page(f" PLAY --> ROUND : {round_count} -> WIN! ",14)
                 print()
                 termcolor.cprint(pyfiglet.figlet_format(winner.name.upper(), font="small"), color="green", end=" ")
-                termcolor.cprint(f"Is Winner in Round {round_count}", color="green")
-                print()
+                termcolor.cprint(f"Is Winner in Round {round_count}\n", color="green")
                 _tmp = input(" Press Enter To Continue ~ ")
 
                 if winner.name == Setting.PL1_NAME:
@@ -52,9 +51,7 @@ def play():
 
             if fulled_cell == 9:
                 welcome_page(f" PLAY -> ROUND : {round_count} -> EQUAL ", 14)
-                print()
-                termcolor.cprint(f"Players Is Equal in Round {round_count}", color="green")
-                print()
+                termcolor.cprint(f"\n Players Is Equal in Round {round_count}\n ", color="green")
                 break
 
             name = pl1.name if name == pl2.name else pl2.name
@@ -99,7 +96,7 @@ def main() -> None:
                     2. Setting
                     3. Show Last Result
 
-                    9. Report Bug
+                    9. Report Bug ( coming soon! )
                     0. Exit The Game"""
         )
 
