@@ -1,20 +1,24 @@
 from exceptions import *
 from functions import *
-from settings import Setting, Config
+from settings import Setting
+from player import Player
 from game import XOGame as XOGame
 
 
 def play():
-    # Config :
-    pl1 = Config.pl1
-    pl2 = Config.pl2
+    # assign players :
+    pl1 = Player(Setting.PL1_NAME, "x")
+    pl2 = Player(Setting.PL2_NAME, "o")
 
-    _name = pl1.name
+    name = pl1.name
     round_count = 1
 
+    # initialize game
+    game = XOGame(pl1, pl2)
+
     while round_count <= Setting.ROUND_COUNT:
-        game = XOGame(pl1, pl2)
-        game.reset()
+
+        # count of fulled cells
         fulled_cell = 0
 
         while fulled_cell <= 9:
@@ -24,14 +28,16 @@ def play():
             termcolor.cprint(game, color="cyan")
             print()
 
-            ui = int(input(f" {_name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
+            ui = int(input(f" {name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
 
+            # mark the game table
             game.mark(ui)
 
+            # select game winner
             winner = game.winner
-            print(winner,"\n")
-            input("")
-            if winner is not None:
+
+            # check ! if winner is player instance
+            if isinstance(winner, Player):
                 welcome_page()
                 termcolor.cprint(f"{'=' * 14} PLAY --> ROUND : {round_count} -> WIN! {'=' * 14}", color="cyan")
                 print()
@@ -54,8 +60,13 @@ def play():
                 print()
                 break
 
-            _name = pl1.name if _name == pl2.name else pl2.name
+            name = pl1.name if name == pl2.name else pl2.name
             fulled_cell += 1
+
+        # reset game for new round !
+        game.reset()
+
+        # increase round count
         round_count += 1
 
     welcome_page()
