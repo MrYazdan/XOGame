@@ -1,20 +1,19 @@
 from exceptions import *
 from functions import *
-from settings import Setting
-from player import Player as _Player
-from game import XOGame as _XOGame
+from settings import Setting, Config
+from game import XOGame as XOGame
 
 
 def play():
     # Config :
-    pl1 = _Player(Setting.PL1_NAME, "x")
-    pl2 = _Player(Setting.PL2_NAME, "o")
+    pl1 = Config.pl1
+    pl2 = Config.pl2
 
     _name = pl1.name
     round_count = 1
 
     while round_count <= Setting.ROUND_COUNT:
-        game = _XOGame(pl1, pl2)
+        game = XOGame(pl1, pl2)
         game.reset()
         fulled_cell = 0
 
