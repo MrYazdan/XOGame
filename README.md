@@ -1,14 +1,14 @@
-# XO Game Console<br/>
+# 🎮 XO Game Console<br/>
 <br/>
-requirement :<br/>
+🟢 requirement :<br/>
 pip3 install pyfiglet<br/>
 pip3 install termcolor2<br/>
 
-# بازی تحت کنسول دوز !<br/>
+# بازی تحت کنسول دوز 🎮 ! <br/>
 <br/>
-ماژول های مورد نیاز :<br/>
+ماژول های مورد نیاز 🟢 :<br/>
 pip3 install pyfiglet<br/>
 pip3 install termcolor2<br/>
 
-# RUN :<br/>
+# ▶ RUN :<br/>
 python3 main.py
