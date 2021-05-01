@@ -7,8 +7,8 @@
  | |_____|  /  \ |_| | | |_| | (_| | | | | | |  __/
  | |       /_/\_\___/   \____|\__,_|_| |_| |_|\___|
  |_|                                               
-  Source : https://github.com/MrYazdan/XOGame_Maktab52
-  Version : 1.0.0  -  Developer : Yazdan
+ Source : https://github.com/MrYazdan/XOGame_Maktab52
+ Version : 1.0.0  -  Developer : Yazdan
 </pre>
 <span>========================================================</span><br/>
 <br/>
