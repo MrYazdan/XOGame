@@ -10,7 +10,7 @@ def welcome_page(string: str, count_ward: int):
     clear()
     termcolor.cprint("=" * 56, color="cyan")
     termcolor.cprint(pyfiglet.figlet_format(" |= XO Game"), color="green", end=" ")
-    print(" Source : https://github.com/MrYazdan/XOGame_Maktab52")
+    print(" Source : https://github.com/MrYazdan/XOGame")
     print(" Version : 1.0.0  -  Developer : Yazdan\n")
 
     if not (string == "" and count_ward == 0):
