@@ -1,6 +1,6 @@
 # XO Game Console
 
-requirement :
+requirement :<br/>
 pip3 install pyfiglet
 pip3 install termcolor2
 
