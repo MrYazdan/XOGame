@@ -1,6 +1,5 @@
 from module import *
 from settings import Setting
-from table import XOTable
 
 
 def clear():
@@ -28,7 +27,7 @@ def iscommand(_from: str, cmd: str) -> bool:
 def command_error(_from: str) -> None:
     if _from == "main":
         welcome_page(" COMMAND  ERROR ", 20)
-        _tmp = input(" Print Your Command Was Not Defined! :(\n Press Enter To Load Main Again ~")
+        _tmp = input(" Print Your Command Was Not Defined! :(\n Press Enter To Load Main Again ~ ")
 
 
 def exit_page(_from: str) -> None:
@@ -91,25 +90,34 @@ def start_game_panel():
     _tmp = input(" Press Enter To Play Game ~ ")
 
 
-def normalize_cell_no(data: str):
+def normalize_cell_no(data: str, table: dict):
+    msg = "This Value Not Valid !"
 
     while True:
-        if data == "":
-            pass
+        try:
+            if data == "":
+                raise Exception
 
-        elif data.isnumeric():
+            elif data.isnumeric():
 
-            if 0 < int(data) < 10:
+                if 0 < int(data) < 10:
 
-                if int(data) not in XOTable.xo_map.values():
-                    return int(data)
+                    if table[int(data)] is not None:
+                        msg = "This Cell Is Fulled !"
+                        raise Exception
 
+                    else:
+                        return int(data)
+
+                else:
+                    raise Exception
             else:
-                pass
+                raise Exception
 
-        welcome_page(" PLAY -> GET TRUE VALUES FOR MARK ", 15)
-        data = input("\n Value Error !\n Enter True Value For Select The Mark [1 ~ 9] : ")
-        continue
+        except:
+            welcome_page(" PLAY -> GET TRUE VALUES FOR MARK ", 15)
+            data = input(f"\n {msg}\n Enter True Value For Select The Mark [1 ~ 9] : ")
+            continue
 
 
 def show_last_result():

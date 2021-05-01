@@ -27,7 +27,8 @@ def play():
             termcolor.cprint(game, color="cyan")
             print()
 
-            ui = normalize_cell_no(input(f" {name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "))
+            table = game.show_xo_dict()
+            ui = normalize_cell_no(input(f" {name.title()} Enter True Number To Mark The Cell [1 ~ 9] : "), table)
 
             # mark the game table
             game.mark(ui)
@@ -37,7 +38,7 @@ def play():
 
             # check ! if winner is player instance
             if isinstance(winner, Player):
-                welcome_page(f" PLAY --> ROUND : {round_count} -> WIN! ",14)
+                welcome_page(f" PLAY --> ROUND : {round_count} -> WIN! ", 14)
                 print()
                 termcolor.cprint(pyfiglet.figlet_format(winner.name.upper(), font="small"), color="green", end=" ")
                 termcolor.cprint(f"Is Winner in Round {round_count}\n", color="green")
@@ -123,7 +124,7 @@ def main() -> None:
                 show_last_result()
                 continue
 
-        except AssertionError:
+        except:
             command_error("main")
             continue
 
