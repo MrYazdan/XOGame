@@ -1,4 +1,5 @@
 <span color="cyan">========================================================</span><br/>
+<pre>
   _        __  _____     ____                      
  | |_____  \ \/ / _ \   / ___| __ _ _ __ ___   ___ 
  | |_____|  \  / | | | | |  _ / _` | '_ ` _ \ / _ \
@@ -6,8 +7,8 @@
  | |       /_/\_\___/   \____|\__,_|_| |_| |_|\___|
  |_|                                               
   Source : https://github.com/MrYazdan/XOGame_Maktab52
- Version : 1.0.0  -  Developer : Yazdan
-
+  Version : 1.0.0  -  Developer : Yazdan
+</pre>
 
 <br/>
 # 🎮 XO Game Console<br/>
