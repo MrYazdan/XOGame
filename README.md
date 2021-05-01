@@ -9,7 +9,7 @@
  |_|                                               
   Source : https://github.com/MrYazdan/XOGame_Maktab52
   Version : 1.0.0  -  Developer : Yazdan
-</pre><br/>
+</pre>
 <span>========================================================</span><br/>
 <br/>
 # 🎮 XO Game Console<br/>
