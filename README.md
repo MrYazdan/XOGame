@@ -12,17 +12,11 @@
 </pre>
 <span>========================================================</span><br/>
 <br/>
-# 🎮 XO Game Console<br/>
+# 🎮 XO Game<br/>
 <br/>
 🟢 requirement :<br/>
-pip3 install pyfiglet<br/>
-pip3 install termcolor2<br/>
-
-# 🎮 بازی تحت کنسول دوز ! <br/>
-<br/>
-🟢 ماژول های مورد نیاز :<br/>
-pip3 install pyfiglet<br/>
-pip3 install termcolor2<br/>
+pip install pyfiglet<br/>
+pip install termcolor2<br/>
 
 # ▶ RUN :<br/>
-python3 main.py
+python main.py
